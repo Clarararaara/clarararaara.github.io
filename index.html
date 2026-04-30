@@ -157,6 +157,8 @@
     }
 
     .hero-badge .star { font-size: 0.9rem; }
+    a.hero-badge { text-decoration: none; cursor: pointer; transition: opacity 0.2s; }
+    a.hero-badge:hover { opacity: 0.8; }
 
     h1 {
       font-family: 'Space Grotesk', sans-serif;
@@ -375,12 +377,16 @@
 
     .pub-body { flex: 1; }
     .pub-title {
+      display: block;
       font-weight: 600;
       color: var(--heading);
       font-size: 0.97rem;
       margin-bottom: 0.35rem;
       line-height: 1.5;
+      text-decoration: none;
+      transition: color 0.2s;
     }
+    .pub-title:hover { color: var(--teal); }
     .pub-authors { font-size: 0.84rem; color: var(--muted); margin-bottom: 0.5rem; }
     .pub-authors strong { color: var(--teal); }
 
@@ -592,9 +598,9 @@
     </div>
 
     <div class="hero-text">
-      <div class="hero-badge">
-        <span class="star">★</span> Forbes 30 Under 30 — Science 2026
-      </div>
+      <a class="hero-badge" href="https://www.forbes.com/30-under-30/2026/science?profile=mengzhou-hu" target="_blank" rel="noopener">
+        <span class="star">★</span> Forbes 30 Under 30 — Science 2026 ↗
+      </a>
       <h1>Mengzhou<br>(Clara) Hu</h1>
       <p class="hero-subtitle">Computational Biologist &amp; Machine Learning Scientist</p>
       <p class="hero-desc">
@@ -717,7 +723,7 @@
     <div class="pub-card">
       <div class="pub-num">01</div>
       <div class="pub-body">
-        <div class="pub-title">Multimodal cell maps as a foundation for structural and functional genomics</div>
+        <a class="pub-title" href="https://www.nature.com/articles/s41586-025-08878-3" target="_blank" rel="noopener">Multimodal cell maps as a foundation for structural and functional genomics ↗</a>
         <div class="pub-authors">Schaffer, L.V.*, <strong>Hu, M.*</strong>, … Huttlin, E.L., Lundberg, E., Ideker, T. &nbsp;<em>*equal contribution</em></div>
         <span class="pub-journal journal-nature">Nature · 2025</span>
       </div>
@@ -726,7 +732,7 @@
     <div class="pub-card">
       <div class="pub-num">02</div>
       <div class="pub-body">
-        <div class="pub-title">Evaluation of large language models for discovery of gene set function</div>
+        <a class="pub-title" href="https://www.nature.com/articles/s41592-024-02525-x" target="_blank" rel="noopener">Evaluation of large language models for discovery of gene set function ↗</a>
         <div class="pub-authors"><strong>Hu, M.</strong>, Alkhairy, S., Lee, I., Pillich, R.T., Fong, D., Smith, K., Bachelder, R., Ideker, T., Pratt, D.</div>
         <span class="pub-journal journal-methods">Nature Methods · 2024</span>
       </div>
@@ -735,7 +741,7 @@
     <div class="pub-card">
       <div class="pub-num">03</div>
       <div class="pub-body">
-        <div class="pub-title">Putting proteins in context</div>
+        <a class="pub-title" href="https://www.sciencedirect.com/science/article/pii/S2405471224002734" target="_blank" rel="noopener">Putting proteins in context ↗</a>
         <div class="pub-authors"><strong>Hu, M.</strong>, Ideker, T.</div>
         <span class="pub-journal journal-cell">Cell Systems · 2024</span>
       </div>
@@ -744,7 +750,7 @@
     <div class="pub-card">
       <div class="pub-num">04</div>
       <div class="pub-body">
-        <div class="pub-title">Exploring the Sexual Dimorphism of Crustacean Neuropeptide Expression using <em>Callinectes sapidus</em> as a Model Organism</div>
+        <a class="pub-title" href="https://pubmed.ncbi.nlm.nih.gov/33872031/" target="_blank" rel="noopener">Exploring the Sexual Dimorphism of Crustacean Neuropeptide Expression using <em>Callinectes sapidus</em> as a Model Organism ↗</a>
         <div class="pub-authors"><strong>Hu, M.</strong>, Helfenbein, K., Buchberger, A., DeLaney, K., Liu, Y., Li, L.</div>
         <span class="pub-journal journal-other">Journal of Proteome Research · 2021</span>
       </div>
