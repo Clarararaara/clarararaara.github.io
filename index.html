@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clara Hu — Computational Biologist & ML Scientist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #f8fafc;
-      --surface:   #f1f5f9;
-      --card:      #ffffff;
-      --border:    #e2e8f0;
-      --teal:      #0d9488;
-      --purple:    #4f6eab;
-      --pink:      #c4647e;
-      --text:      #334155;
-      --muted:     #64748b;
-      --heading:   #0f172a;
+      --bg:       #f5f3ef;
+      --surface:  #eceae5;
+      --sage:     #3d5247;
+      --card:     #ffffff;
+      --border:   #e0ddd6;
+      --lavender: #c5b8d8;
+      --plum:     #7a5090;
+      --rose:     #c4a0b0;
+      --text:     #1c1a18;
+      --muted:    #888480;
+      --heading:  #111010;
     }
 
     html { scroll-behavior: smooth; }
@@ -27,13 +28,13 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      font-family: 'DM Sans', 'Inter', sans-serif;
       font-size: 15px;
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    /* ── NAV ─────────────────────────────────────────── */
+    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -41,296 +42,261 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 2.5rem;
-      height: 60px;
-      background: rgba(248,250,252,0.92);
-      backdrop-filter: blur(14px);
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(245,243,239,0.92);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 16px rgba(15,23,42,0.05);
     }
 
     .nav-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--teal);
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--heading);
       text-decoration: none;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.01em;
     }
 
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--teal); }
+    .nav-links a:hover { color: var(--text); }
 
-    /* ── HERO ────────────────────────────────────────── */
+    /* ── HERO ── */
     #hero {
-      position: relative;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6rem 2rem 4rem;
-      overflow: hidden;
-    }
-
-    #network-canvas {
-      position: absolute;
-      inset: 0;
-      opacity: 0.3;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1000px;
-      width: 100%;
       display: grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
       gap: 4rem;
-      align-items: center;
-      text-align: left;
     }
 
-    .hero-photo-wrap {
-      position: relative;
-      flex-shrink: 0;
-    }
+    .hero-left { max-width: 520px; }
 
-    .hero-photo {
-      width: 300px;
-      height: 380px;
-      object-fit: cover;
-      object-position: top center;
-      border-radius: 20px;
-      display: block;
-      box-shadow: 0 20px 60px rgba(15,23,42,0.15), 0 4px 16px rgba(13,148,136,0.12);
-      border: 3px solid white;
-    }
-
-    .hero-photo-accent {
-      position: absolute;
-      bottom: -12px;
-      right: -12px;
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
-      background: linear-gradient(135deg, var(--teal), var(--purple));
-      opacity: 0.18;
-      z-index: -1;
-    }
-
-    .hero-text { display: flex; flex-direction: column; align-items: flex-start; }
-
-    @media (max-width: 780px) {
-      .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-photo-wrap { margin: 0 auto; }
-      .hero-text { align-items: center; }
-      .hero-links { justify-content: center; }
-      .hero-stats { justify-content: center; }
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(13,148,136,0.08);
-      border: 1px solid rgba(13,148,136,0.25);
-      border-radius: 100px;
-      padding: 0.35rem 1rem;
-      font-size: 0.78rem;
+    .hero-tag {
+      font-size: 0.72rem;
       font-weight: 600;
-      color: var(--teal);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      color: var(--plum);
+      margin-bottom: 1.4rem;
     }
-
-    .hero-badge .star { font-size: 0.9rem; }
-    a.hero-badge { text-decoration: none; cursor: pointer; transition: opacity 0.2s; }
-    a.hero-badge:hover { opacity: 0.8; }
 
     h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.6rem, 7vw, 5rem);
-      font-weight: 700;
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 400;
       color: var(--heading);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.4rem;
-    }
-
-    .hero-subtitle {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      font-weight: 500;
-      background: linear-gradient(90deg, var(--teal), var(--purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1.2rem;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.4rem;
     }
 
     .hero-desc {
       color: var(--muted);
       font-size: 1rem;
-      max-width: 560px;
-      margin: 0 auto 2.2rem;
       line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 420px;
     }
 
-    .hero-links {
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .hero-cta:hover { color: var(--plum); border-color: var(--plum); }
+
+    .hero-badge-row {
+      margin-top: 2.5rem;
       display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.8rem;
     }
-
-    .btn {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.65rem 1.4rem;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-primary {
-      background: var(--teal);
-      color: #ffffff;
-    }
-    .btn-primary:hover { background: #0f766e; transform: translateY(-1px); }
-    .btn-outline {
-      border: 1px solid rgba(15,23,42,0.12);
-      color: var(--text);
-      background: white;
-      box-shadow: 0 1px 8px rgba(15,23,42,0.06);
-    }
-    .btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-1px); }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-top: 4rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid rgba(15,23,42,0.1);
-      flex-wrap: wrap;
-    }
-    .stat { text-align: center; }
-    .stat-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--teal);
-    }
-    .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-
-    /* ── SECTIONS ────────────────────────────────────── */
-    section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
-
-    .section-label {
+      background: rgba(122,80,144,0.08);
+      border: 1px solid rgba(122,80,144,0.2);
+      border-radius: 100px;
+      padding: 0.3rem 0.9rem;
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      color: var(--plum);
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 0.6rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .hero-badge:hover { opacity: 0.75; }
+
+    /* hero right — photo + blob */
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 500px;
     }
 
-    h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 700;
-      color: var(--heading);
-      letter-spacing: -0.02em;
+    .hero-blob {
+      position: absolute;
+      top: 0; right: -2rem;
+      width: 420px;
+      height: 420px;
+      z-index: 0;
+      opacity: 0.85;
+    }
+
+    .hero-photo {
+      position: relative;
+      z-index: 1;
+      width: 280px;
+      height: 360px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 16px;
+      border: 3px solid white;
+      box-shadow: 0 12px 40px rgba(28,26,24,0.12);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      padding: 6rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
       margin-bottom: 2.5rem;
     }
 
-    /* ── ABOUT ───────────────────────────────────────── */
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      color: var(--heading);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ABOUT ── */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 4rem;
+      align-items: start;
     }
 
-    .about-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.4rem 1.6rem;
-      box-shadow: 0 2px 12px rgba(15,23,42,0.05);
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    .about-body p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
     }
-    .about-card:hover { border-color: rgba(13,148,136,0.35); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(13,148,136,0.1); }
-    .about-card:first-child { grid-column: 1 / -1; }
+    .about-body strong { color: var(--text); font-weight: 500; }
 
-    .about-card-label {
+    .about-sidebar { display: flex; flex-direction: column; gap: 1.4rem; }
+
+    .about-fact {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .about-fact-label {
       font-size: 0.72rem;
-      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--purple);
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .about-fact-value { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+
+    /* ── RESEARCH FOCUS CARDS ── */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--card);
+    }
+
+    .focus-card {
+      padding: 2rem 1.6rem;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .focus-card:last-child { border-right: none; }
+    .focus-card:hover { background: var(--bg); }
+
+    .focus-icon {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--plum);
+      opacity: 0.7;
+    }
+    .focus-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--heading);
       margin-bottom: 0.5rem;
     }
-    .about-card p { color: var(--muted); font-size: 0.93rem; line-height: 1.8; }
-    .about-card strong { color: var(--text); }
+    .focus-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
 
-    /* ── EXPERIENCE ──────────────────────────────────── */
-    .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+    /* ── EXPERIENCE ── */
+    .timeline { display: flex; flex-direction: column; }
 
     .tl-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.6rem 1.8rem;
-      position: relative;
-      box-shadow: 0 2px 12px rgba(15,23,42,0.05);
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
     }
-    .tl-item:hover { border-color: rgba(13,148,136,0.35); transform: translateX(4px); box-shadow: 0 6px 20px rgba(13,148,136,0.1); }
+    .tl-item:last-child { border-bottom: 1px solid var(--border); }
 
-    .tl-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.3rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
+    .tl-left { padding-top: 0.1rem; }
+    .tl-date { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .tl-org { font-size: 0.82rem; color: var(--plum); font-weight: 500; font-style: italic; }
+
+    .tl-right {}
     .tl-role {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      font-size: 1.05rem;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
       color: var(--heading);
-    }
-    .tl-date {
-      font-size: 0.78rem;
-      color: var(--teal);
-      font-weight: 600;
-      background: rgba(13,148,136,0.08);
-      border: 1px solid rgba(13,148,136,0.2);
-      border-radius: 100px;
-      padding: 0.2rem 0.8rem;
-      white-space: nowrap;
-    }
-    .tl-org {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      font-style: italic;
+      margin-bottom: 0.8rem;
     }
     .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
     .tl-bullets li {
@@ -338,238 +304,245 @@
       color: var(--muted);
       padding-left: 1.2rem;
       position: relative;
-      line-height: 1.65;
+      line-height: 1.7;
     }
     .tl-bullets li::before {
-      content: '▸';
+      content: '—';
       position: absolute;
       left: 0;
-      color: var(--teal);
-      font-size: 0.75rem;
-      top: 0.22rem;
+      color: var(--lavender);
+      font-size: 0.8rem;
     }
     .tl-bullets strong { color: var(--text); font-weight: 500; }
 
-    /* ── PUBLICATIONS ────────────────────────────────── */
-    .pub-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    /* ── PUBLICATIONS ── */
+    .pub-list { display: flex; flex-direction: column; }
 
-    .pub-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.5rem 1.8rem;
-      display: flex;
-      gap: 1.4rem;
-      align-items: flex-start;
-      box-shadow: 0 2px 12px rgba(15,23,42,0.05);
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    .pub-item {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 1.5rem;
+      align-items: start;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      transition: background 0.15s;
     }
-    .pub-card:hover { border-color: rgba(79,110,171,0.35); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79,110,171,0.1); }
+    .pub-item:last-child { border-bottom: 1px solid var(--border); }
 
     .pub-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: rgba(13,148,136,0.25);
-      line-height: 1;
-      min-width: 2.5rem;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--lavender);
+      line-height: 1.2;
+      padding-top: 0.1rem;
     }
 
-    .pub-body { flex: 1; }
+    .pub-body {}
     .pub-title {
-      display: block;
-      font-weight: 600;
-      color: var(--heading);
+      font-weight: 500;
       font-size: 0.97rem;
-      margin-bottom: 0.35rem;
+      color: var(--heading);
       line-height: 1.5;
       text-decoration: none;
+      display: block;
+      margin-bottom: 0.35rem;
       transition: color 0.2s;
     }
-    .pub-title:hover { color: var(--teal); }
-    .pub-authors { font-size: 0.84rem; color: var(--muted); margin-bottom: 0.5rem; }
-    .pub-authors strong { color: var(--teal); }
+    .pub-title:hover { color: var(--plum); }
+
+    .pub-authors { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.6rem; }
+    .pub-authors strong { color: var(--plum); font-weight: 500; }
 
     .pub-journal {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      padding: 0.2rem 0.7rem;
-      border-radius: 100px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.65rem;
+      border-radius: 4px;
     }
-    .journal-nature { background: rgba(13,148,136,0.1); color: var(--teal); border: 1px solid rgba(13,148,136,0.22); }
-    .journal-methods { background: rgba(79,110,171,0.1); color: var(--purple); border: 1px solid rgba(79,110,171,0.22); }
-    .journal-cell { background: rgba(255,107,157,0.12); color: var(--pink); border: 1px solid rgba(255,107,157,0.25); }
-    .journal-other { background: rgba(255,255,255,0.06); color: var(--muted); border: 1px solid var(--border); }
+    .j-nature  { background: rgba(122,80,144,0.09); color: var(--plum); }
+    .j-methods { background: rgba(143,168,130,0.15); color: #4a6a40; }
+    .j-cell    { background: rgba(196,160,176,0.2);  color: #8a5060; }
+    .j-other   { background: rgba(28,26,24,0.06);    color: var(--muted); }
 
-    /* ── SKILLS ──────────────────────────────────────── */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+    .pub-arrow {
+      font-size: 1rem;
+      color: var(--border);
+      transition: color 0.2s, transform 0.2s;
+      padding-top: 0.1rem;
+      text-decoration: none;
+    }
+    .pub-item:hover .pub-arrow { color: var(--plum); transform: translate(2px,-2px); }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
     .skill-card {
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.4rem 1.6rem;
-      box-shadow: 0 2px 12px rgba(15,23,42,0.05);
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      padding: 1.8rem 2rem;
     }
-    .skill-card:hover { border-color: rgba(13,148,136,0.35); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(13,148,136,0.1); }
-
-    .skill-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
-    .skill-category {
-      font-family: 'Space Grotesk', sans-serif;
+    .skill-icon { font-size: 1.2rem; margin-bottom: 0.7rem; }
+    .skill-cat {
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--heading);
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.8rem;
     }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 6px;
-      background: rgba(15,23,42,0.05);
+      font-size: 0.73rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      background: var(--bg);
       color: var(--muted);
       border: 1px solid var(--border);
     }
 
-    /* ── TALKS ───────────────────────────────────────── */
-    .talks-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    /* ── TALKS ── */
+    .talks-list { display: flex; flex-direction: column; }
 
     .talk-item {
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-      padding: 1rem 1.3rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      box-shadow: 0 1px 8px rgba(15,23,42,0.04);
-      transition: border-color 0.2s, box-shadow 0.2s;
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 1.5rem;
+      align-items: baseline;
+      padding: 1.2rem 0;
+      border-top: 1px solid var(--border);
     }
-    .talk-item:hover { border-color: rgba(13,148,136,0.3); box-shadow: 0 4px 14px rgba(13,148,136,0.08); }
+    .talk-item:last-child { border-bottom: 1px solid var(--border); }
 
-    .talk-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--teal);
-      margin-top: 0.55rem;
-      flex-shrink: 0;
-    }
-    .talk-dot.invited { background: var(--purple); }
+    .talk-year { font-size: 0.78rem; color: var(--muted); }
+    .talk-text { font-size: 0.9rem; color: var(--text); line-height: 1.55; }
+    .talk-text em { color: var(--muted); font-style: normal; }
 
-    .talk-year {
-      font-size: 0.78rem;
+    .talk-badge {
+      font-size: 0.68rem;
       font-weight: 600;
-      color: var(--teal);
-      min-width: 2.8rem;
-      margin-top: 0.1rem;
-    }
-    .talk-text { font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
-    .talk-type {
-      font-size: 0.72rem;
-      font-weight: 600;
+      letter-spacing: 0.05em;
       padding: 0.15rem 0.55rem;
       border-radius: 4px;
-      margin-left: 0.4rem;
-      vertical-align: middle;
+      white-space: nowrap;
     }
-    .type-invited { background: rgba(79,110,171,0.1); color: var(--purple); }
-    .type-oral { background: rgba(13,148,136,0.08); color: var(--teal); }
+    .b-invited { background: rgba(122,80,144,0.1); color: var(--plum); }
+    .b-oral    { background: rgba(143,168,130,0.15); color: #4a6a40; }
 
-    /* ── EDUCATION ───────────────────────────────────── */
-    .edu-list { display: flex; flex-direction: column; gap: 1rem; }
+    /* ── EDUCATION ── */
+    .edu-list { display: flex; flex-direction: column; }
+
     .edu-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.4rem 1.8rem;
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      box-shadow: 0 2px 12px rgba(15,23,42,0.05);
-      transition: border-color 0.2s, box-shadow 0.2s;
+      gap: 2rem;
+      padding: 1.8rem 0;
+      border-top: 1px solid var(--border);
     }
-    .edu-item:hover { border-color: rgba(13,148,136,0.35); box-shadow: 0 6px 20px rgba(13,148,136,0.1); }
+    .edu-item:last-child { border-bottom: 1px solid var(--border); }
+
     .edu-degree {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
       color: var(--heading);
-      font-size: 0.97rem;
+      margin-bottom: 0.25rem;
     }
-    .edu-school { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+    .edu-school { font-size: 0.85rem; color: var(--muted); }
     .edu-meta { text-align: right; }
     .edu-gpa {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      color: var(--teal);
-      background: rgba(13,148,136,0.08);
-      border: 1px solid rgba(13,148,136,0.2);
-      border-radius: 6px;
-      padding: 0.2rem 0.7rem;
+      color: var(--plum);
+      background: rgba(122,80,144,0.08);
+      border: 1px solid rgba(122,80,144,0.18);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      display: inline-block;
+      margin-bottom: 0.3rem;
     }
-    .edu-year { font-size: 0.78rem; color: var(--muted); margin-top: 0.35rem; }
+    .edu-year { font-size: 0.75rem; color: var(--muted); }
 
-    /* ── FOOTER ──────────────────────────────────────── */
-    footer {
-      background: var(--surface);
-      border-top: 1px solid rgba(15,23,42,0.08);
-      padding: 4rem 2rem;
-      text-align: center;
+    /* ── SAGE BAND ── */
+    .sage-band {
+      background: var(--sage);
+      padding: 5rem 3rem;
     }
-    footer h2 {
-      margin-bottom: 0.5rem;
+    .sage-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
     }
-    .footer-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    .sage-band h2 { color: #e8e4dc; margin-bottom: 0.8rem; }
+    .sage-band .section-tag { color: rgba(232,228,220,0.5); }
+    .sage-desc { color: rgba(232,228,220,0.7); font-size: 0.95rem; line-height: 1.8; }
+
     .contact-links {
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
+      flex-direction: column;
+      gap: 0.8rem;
+      align-items: flex-start;
     }
     .contact-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      border: 1px solid rgba(13,148,136,0.25);
-      color: var(--text);
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: rgba(232,228,220,0.7);
       text-decoration: none;
-      font-size: 0.86rem;
-      font-weight: 500;
-      background: white;
-      box-shadow: 0 2px 8px rgba(15,23,42,0.06);
-      transition: all 0.2s;
+      transition: color 0.2s;
+      border-bottom: 1px solid rgba(232,228,220,0.2);
+      padding-bottom: 2px;
     }
-    .contact-link:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(13,148,136,0.12); }
+    .contact-link:hover { color: #e8e4dc; border-color: rgba(232,228,220,0.6); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
     .footer-copy { font-size: 0.78rem; color: var(--muted); }
-
-    /* ── DIVIDER ─────────────────────────────────────── */
-    .section-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(15,23,42,0.1), transparent);
-      margin: 0 auto;
-      max-width: 900px;
+    .footer-icons { display: flex; gap: 1.2rem; }
+    .footer-icon {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
     }
+    .footer-icon:hover { color: var(--plum); }
 
-    /* ── RESPONSIVE ──────────────────────────────────── */
-    @media (max-width: 640px) {
-      nav { padding: 0 1.2rem; }
-      .nav-links { gap: 1.2rem; }
-      .nav-links a { font-size: 0.75rem; }
-      section { padding: 4rem 1.2rem; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-card:first-child { grid-column: 1; }
-      .pub-card { flex-direction: column; gap: 0.8rem; }
-      .pub-num { font-size: 1.3rem; }
-      h2 { margin-bottom: 1.8rem; }
-      .hero-stats { gap: 1.5rem; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+      .hero-right { height: 340px; }
+      .hero-blob { width: 300px; height: 300px; right: 0; }
+      .hero-photo { width: 220px; height: 280px; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .focus-grid { grid-template-columns: 1fr 1fr; }
+      .tl-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .pub-item { grid-template-columns: 36px 1fr; }
+      .pub-arrow { display: none; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .sage-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .section { padding: 4rem 1.5rem; }
+      nav { padding: 0 1.5rem; }
+      .nav-links { gap: 1.5rem; }
     }
   </style>
 </head>
@@ -580,328 +553,342 @@
   <a class="nav-logo" href="#hero">Clara Hu</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#publications">Research</a></li>
-    <li><a href="#talks">Talks</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <canvas id="network-canvas"></canvas>
-  <div class="hero-content">
-
-    <div class="hero-photo-wrap">
-      <img class="hero-photo" src="headshot.jpg" alt="Mengzhou (Clara) Hu" />
-      <div class="hero-photo-accent"></div>
+  <div class="hero-left">
+    <a class="hero-badge" href="https://www.forbes.com/30-under-30/2026/science?profile=mengzhou-hu" target="_blank" rel="noopener">
+      ★ Forbes 30 Under 30 — Science 2026
+    </a>
+    <h1>Mengzhou<br>(Clara) Hu</h1>
+    <p class="hero-tag" style="margin-bottom:1.2rem;">Computational Biologist &amp; Machine Learning Scientist</p>
+    <p class="hero-desc">
+      Bridging AI and biology to decode the molecular architecture of disease.
+      First-author publications in <em>Nature</em> and <em>Nature Methods</em>.
+      Currently at Johnson &amp; Johnson.
+    </p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem;">
+      <a class="hero-cta" href="mailto:humengzhouclara@gmail.com">✉ Email</a>
+      <a class="hero-cta" href="https://scholar.google.com/citations?user=omlPnZkAAAAJ&hl=en" target="_blank" rel="noopener">Scholar ↗</a>
+      <a class="hero-cta" href="https://github.com/Clarararaara" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="hero-cta" href="https://linkedin.com/in/mengzhou-clara-hu" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
+  </div>
 
-    <div class="hero-text">
-      <a class="hero-badge" href="https://www.forbes.com/30-under-30/2026/science?profile=mengzhou-hu" target="_blank" rel="noopener">
-        <span class="star">★</span> Forbes 30 Under 30 — Science 2026 ↗
-      </a>
-      <h1>Mengzhou<br>(Clara) Hu</h1>
-      <p class="hero-subtitle">Computational Biologist &amp; Machine Learning Scientist</p>
-      <p class="hero-desc">
-        Bridging AI and biology to decode the molecular architecture of disease.
-        First-author publications in <em>Nature</em> and <em>Nature Methods</em>.
-        Currently building network models for immune diseases at Johnson &amp; Johnson.
-      </p>
-      <div class="hero-links">
-        <a class="btn btn-primary" href="mailto:humengzhouclara@gmail.com">✉ Get in touch</a>
-        <a class="btn btn-outline" href="https://scholar.google.com/citations?user=omlPnZkAAAAJ&hl=en" target="_blank" rel="noopener">Scholar ↗</a>
-        <a class="btn btn-outline" href="https://github.com/Clarararaara" target="_blank" rel="noopener">GitHub ↗</a>
-        <a class="btn btn-outline" href="https://linkedin.com/in/mengzhou-clara-hu" target="_blank" rel="noopener">LinkedIn ↗</a>
-      </div>
-    </div>
-
+  <div class="hero-right">
+    <!-- Organic lavender blob -->
+    <svg class="hero-blob" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="blobGrad" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#d4c5e8" stop-opacity="0.9"/>
+          <stop offset="60%" stop-color="#c5b8d8" stop-opacity="0.7"/>
+          <stop offset="100%" stop-color="#b8a8cc" stop-opacity="0.4"/>
+        </radialGradient>
+        <filter id="blur">
+          <feGaussianBlur stdDeviation="8"/>
+        </filter>
+      </defs>
+      <path d="M200,40 C270,30 340,80 360,160 C380,240 350,320 280,355 C210,390 130,370 80,310 C30,250 40,150 80,100 C110,60 150,48 200,40 Z"
+            fill="url(#blobGrad)" filter="url(#blur)"/>
+      <!-- Thin decorative lines -->
+      <path d="M140,120 Q220,180 300,140" stroke="rgba(122,80,144,0.25)" stroke-width="1" fill="none"/>
+      <path d="M100,200 Q200,160 310,220" stroke="rgba(122,80,144,0.18)" stroke-width="1" fill="none"/>
+      <path d="M120,280 Q210,240 320,270" stroke="rgba(122,80,144,0.15)" stroke-width="1" fill="none"/>
+    </svg>
+    <img class="hero-photo" src="headshot.jpg" alt="Mengzhou (Clara) Hu" />
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
 <!-- ABOUT -->
-<section id="about">
-  <p class="section-label">About</p>
-  <h2>Who I am</h2>
+<section class="section" id="about">
+  <p class="section-tag">About</p>
   <div class="about-grid">
-    <div class="about-card">
-      <p class="about-card-label">Summary</p>
+    <div class="about-body">
+      <h2>About Me</h2>
       <p>
-        I am a <strong>Computational Biologist and Machine Learning Scientist</strong> specializing in
-        AI-driven biological discovery. My work sits at the intersection of large language models,
-        multimodal deep learning, and large-scale biological data — with the goal of mapping how
-        proteins organize inside cells and how mutations drive cancer. I am passionate about building
-        tools that make AI a genuine partner in scientific discovery.
+        I am a <strong>Computational Biologist and Machine Learning Scientist</strong> specializing in AI-driven biological discovery. My research integrates large language models, multimodal deep learning frameworks, and large-scale omics data to understand how proteins organize inside cells and how mutations drive disease.
+      </p>
+      <p>
+        Currently, I am developing <strong>network-based computational models</strong> integrating multi-omics data to identify disease mechanisms in immune disorders, applying machine learning and systems biology approaches to translate large-scale biological data into therapeutic insights.
+      </p>
+      <p>
+        I am passionate about building AI tools that make scientific discovery faster, more rigorous, and genuinely collaborative between humans and machines.
       </p>
     </div>
-    <div class="about-card">
-      <p class="about-card-label">Current Role</p>
-      <p>
-        <strong>Postdoctoral Scientist</strong> at <strong>Johnson &amp; Johnson</strong> (Dec 2025–Present),
-        developing network-based models from multi-omics data to understand immune diseases.
-      </p>
-    </div>
-    <div class="about-card">
-      <p class="about-card-label">Research Interests</p>
-      <p>
-        LLM applications in biology · Multimodal ML · Protein network biology ·
-        Cancer cell mapping · Agentic AI systems · Perturbation biology
-      </p>
+    <div class="about-sidebar">
+      <div class="about-fact">
+        <div class="about-fact-label">Current Position</div>
+        <div class="about-fact-value">Postdoctoral Scientist, Johnson &amp; Johnson</div>
+      </div>
+      <div class="about-fact">
+        <div class="about-fact-label">Location</div>
+        <div class="about-fact-value">San Diego, CA</div>
+      </div>
+      <div class="about-fact">
+        <div class="about-fact-label">Research Interests</div>
+        <div class="about-fact-value">LLMs in Biology · Multimodal ML · Protein Networks · Agentic AI · Perturbation Biology</div>
+      </div>
+      <div class="about-fact">
+        <div class="about-fact-label">Languages</div>
+        <div class="about-fact-value">English · Mandarin</div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
+
+<!-- RESEARCH FOCUS -->
+<section class="section" id="research">
+  <p class="section-tag">Research Focus</p>
+  <div class="focus-grid">
+    <div class="focus-card">
+      <div class="focus-icon">✦</div>
+      <div class="focus-title">AI for Biology</div>
+      <div class="focus-desc">Building LLM-based systems for gene set function analysis and biomedical hypothesis generation.</div>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">◯</div>
+      <div class="focus-title">Multimodal ML</div>
+      <div class="focus-desc">Integrating protein networks and high-resolution imaging to create comprehensive cancer cell maps.</div>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">△</div>
+      <div class="focus-title">Systems Biology</div>
+      <div class="focus-desc">Network-based models from multi-omics data to identify disease mechanisms in immune disorders.</div>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">◇</div>
+      <div class="focus-title">Agentic AI</div>
+      <div class="focus-desc">Role-specialized LLM agent systems to accelerate cancer genetic dependency identification.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PUBLICATIONS -->
+<section class="section" id="publications">
+  <p class="section-tag">Publications</p>
+  <h2>Selected Research</h2>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <div class="pub-num">01</div>
+      <div class="pub-body">
+        <a class="pub-title" href="https://www.nature.com/articles/s41586-025-08878-3" target="_blank" rel="noopener">
+          Multimodal cell maps as a foundation for structural and functional genomics
+        </a>
+        <div class="pub-authors">Schaffer, L.V.*, <strong>Hu, M.*</strong>, … Huttlin, E.L., Lundberg, E., Ideker, T. &nbsp;<em>*equal contribution</em></div>
+        <span class="pub-journal j-nature">Nature · 2025</span>
+      </div>
+      <a class="pub-arrow" href="https://www.nature.com/articles/s41586-025-08878-3" target="_blank" rel="noopener">↗</a>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">02</div>
+      <div class="pub-body">
+        <a class="pub-title" href="https://www.nature.com/articles/s41592-024-02525-x" target="_blank" rel="noopener">
+          Evaluation of large language models for discovery of gene set function
+        </a>
+        <div class="pub-authors"><strong>Hu, M.</strong>, Alkhairy, S., Lee, I., Pillich, R.T., Fong, D., Smith, K., Bachelder, R., Ideker, T., Pratt, D.</div>
+        <span class="pub-journal j-methods">Nature Methods · 2024</span>
+      </div>
+      <a class="pub-arrow" href="https://www.nature.com/articles/s41592-024-02525-x" target="_blank" rel="noopener">↗</a>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">03</div>
+      <div class="pub-body">
+        <a class="pub-title" href="https://www.sciencedirect.com/science/article/pii/S2405471224002734" target="_blank" rel="noopener">
+          Putting proteins in context
+        </a>
+        <div class="pub-authors"><strong>Hu, M.</strong>, Ideker, T.</div>
+        <span class="pub-journal j-cell">Cell Systems · 2024</span>
+      </div>
+      <a class="pub-arrow" href="https://www.sciencedirect.com/science/article/pii/S2405471224002734" target="_blank" rel="noopener">↗</a>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">04</div>
+      <div class="pub-body">
+        <a class="pub-title" href="https://pubmed.ncbi.nlm.nih.gov/33872031/" target="_blank" rel="noopener">
+          Exploring the Sexual Dimorphism of Crustacean Neuropeptide Expression using <em>Callinectes sapidus</em> as a Model Organism
+        </a>
+        <div class="pub-authors"><strong>Hu, M.</strong>, Helfenbein, K., Buchberger, A., DeLaney, K., Liu, Y., Li, L.</div>
+        <span class="pub-journal j-other">Journal of Proteome Research · 2021</span>
+      </div>
+      <a class="pub-arrow" href="https://pubmed.ncbi.nlm.nih.gov/33872031/" target="_blank" rel="noopener">↗</a>
+    </div>
+
+  </div>
+  <p style="margin-top:1.5rem; font-size:0.82rem; color:var(--muted);">
+    Full list on <a href="https://scholar.google.com/citations?user=omlPnZkAAAAJ&hl=en" target="_blank" rel="noopener" style="color:var(--plum); text-decoration:none; border-bottom:1px solid rgba(122,80,144,0.3);">Google Scholar ↗</a>
+  </p>
+</section>
+
+<div class="divider"></div>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-  <p class="section-label">Experience</p>
+<section class="section" id="experience">
+  <p class="section-tag">Experience</p>
   <h2>Research &amp; Work</h2>
   <div class="timeline">
 
     <div class="tl-item">
-      <div class="tl-header">
-        <div class="tl-role">Postdoctoral Scientist</div>
+      <div class="tl-left">
         <div class="tl-date">Dec 2025 – Present</div>
+        <div class="tl-org">Johnson &amp; Johnson</div>
       </div>
-      <div class="tl-org">Johnson &amp; Johnson · San Diego, CA</div>
-      <ul class="tl-bullets">
-        <li>Developing <strong>network-based computational models</strong> integrating multi-omics data to identify disease mechanisms in immune disorders.</li>
-        <li>Applying <strong>machine learning and systems biology</strong> approaches to translate large-scale biological data into therapeutic insights.</li>
-      </ul>
+      <div class="tl-right">
+        <div class="tl-role">Postdoctoral Scientist</div>
+        <ul class="tl-bullets">
+          <li>Developing <strong>network-based computational models</strong> integrating multi-omics data to identify disease mechanisms in immune disorders.</li>
+          <li>Applying <strong>machine learning and systems biology</strong> approaches to translate large-scale biological data into therapeutic insights.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-header">
-        <div class="tl-role">Ph.D. Researcher</div>
+      <div class="tl-left">
         <div class="tl-date">Jul 2022 – Dec 2025</div>
+        <div class="tl-org">UC San Diego — Ideker Lab</div>
       </div>
-      <div class="tl-org">UC San Diego — Dr. Trey Ideker's Lab · San Diego, CA</div>
-      <ul class="tl-bullets">
-        <li>Developed <strong>multimodal deep learning frameworks</strong> integrating protein networks and high-resolution imaging data across 5,100+ proteins using self-supervised contrastive learning to create comprehensive human cancer cell maps (<em>Nature</em>, 2025).</li>
-        <li>Integrated cancer genomics data with the cancer cell map to identify <strong>21 recurrently mutated protein systems</strong> in pediatric tumors, with 102 driver genes validated by mouse transposon screening.</li>
-        <li><strong>Benchmarked LLMs</strong> for biological discovery, designing systematic evaluation frameworks for gene set function analysis (<em>Nature Methods</em>, 2024).</li>
-        <li>Developing <strong>agentic AI systems</strong> for automated cancer genetic dependency identification and biomedical hypothesis generation using role-specialized LLM agents.</li>
-      </ul>
+      <div class="tl-right">
+        <div class="tl-role">Ph.D. Researcher</div>
+        <ul class="tl-bullets">
+          <li>Developed <strong>multimodal deep learning frameworks</strong> integrating protein networks and high-resolution imaging across 5,100+ proteins using self-supervised contrastive learning (<em>Nature</em>, 2025).</li>
+          <li>Integrated cancer genomics data to identify <strong>21 recurrently mutated protein systems</strong> in pediatric tumors, with 102 driver genes validated by mouse transposon screening.</li>
+          <li><strong>Benchmarked LLMs</strong> for biological discovery, designing systematic evaluation frameworks for gene set function analysis (<em>Nature Methods</em>, 2024).</li>
+          <li>Developing <strong>agentic AI systems</strong> for automated cancer genetic dependency identification using role-specialized LLM agents.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-header">
-        <div class="tl-role">Master's Researcher</div>
+      <div class="tl-left">
         <div class="tl-date">Sep 2019 – May 2021</div>
+        <div class="tl-org">Brown University — Salomon Lab</div>
       </div>
-      <div class="tl-org">Brown University — Dr. Arthur Salomon's Lab · Providence, RI</div>
-      <ul class="tl-bullets">
-        <li>Thesis work uncovering a novel feedback loop in the <strong>T cell receptor signaling cascade</strong> via phosphoproteomics technology and analysis.</li>
-      </ul>
+      <div class="tl-right">
+        <div class="tl-role">Master's Researcher</div>
+        <ul class="tl-bullets">
+          <li>Thesis on a novel feedback loop in the <strong>T cell receptor signaling cascade</strong> via phosphoproteomics technology.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-header">
-        <div class="tl-role">Undergraduate Researcher</div>
+      <div class="tl-left">
         <div class="tl-date">Sep 2016 – Jan 2019</div>
+        <div class="tl-org">UW-Madison — Li Lab</div>
       </div>
-      <div class="tl-org">University of Wisconsin-Madison — Dr. Lingjun Li's Lab · Madison, WI</div>
-      <ul class="tl-bullets">
-        <li>Explored <strong>sexual dimorphism in neuropeptide expression</strong> of <em>Callinectes sapidus</em> using advanced mass spectrometry, leading to a publication in <em>Journal of Proteome Research</em> (2021).</li>
-      </ul>
+      <div class="tl-right">
+        <div class="tl-role">Undergraduate Researcher</div>
+        <ul class="tl-bullets">
+          <li>Explored <strong>sexual dimorphism in neuropeptide expression</strong> of <em>Callinectes sapidus</em> via advanced mass spectrometry (<em>J. Proteome Research</em>, 2021).</li>
+        </ul>
+      </div>
     </div>
 
   </div>
 </section>
 
-
-<div class="section-divider"></div>
-
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <p class="section-label">Publications</p>
-  <h2>Selected Research</h2>
-  <div class="pub-list">
-
-    <div class="pub-card">
-      <div class="pub-num">01</div>
-      <div class="pub-body">
-        <a class="pub-title" href="https://www.nature.com/articles/s41586-025-08878-3" target="_blank" rel="noopener">Multimodal cell maps as a foundation for structural and functional genomics ↗</a>
-        <div class="pub-authors">Schaffer, L.V.*, <strong>Hu, M.*</strong>, … Huttlin, E.L., Lundberg, E., Ideker, T. &nbsp;<em>*equal contribution</em></div>
-        <span class="pub-journal journal-nature">Nature · 2025</span>
-      </div>
-    </div>
-
-    <div class="pub-card">
-      <div class="pub-num">02</div>
-      <div class="pub-body">
-        <a class="pub-title" href="https://www.nature.com/articles/s41592-024-02525-x" target="_blank" rel="noopener">Evaluation of large language models for discovery of gene set function ↗</a>
-        <div class="pub-authors"><strong>Hu, M.</strong>, Alkhairy, S., Lee, I., Pillich, R.T., Fong, D., Smith, K., Bachelder, R., Ideker, T., Pratt, D.</div>
-        <span class="pub-journal journal-methods">Nature Methods · 2024</span>
-      </div>
-    </div>
-
-    <div class="pub-card">
-      <div class="pub-num">03</div>
-      <div class="pub-body">
-        <a class="pub-title" href="https://www.sciencedirect.com/science/article/pii/S2405471224002734" target="_blank" rel="noopener">Putting proteins in context ↗</a>
-        <div class="pub-authors"><strong>Hu, M.</strong>, Ideker, T.</div>
-        <span class="pub-journal journal-cell">Cell Systems · 2024</span>
-      </div>
-    </div>
-
-    <div class="pub-card">
-      <div class="pub-num">04</div>
-      <div class="pub-body">
-        <a class="pub-title" href="https://pubmed.ncbi.nlm.nih.gov/33872031/" target="_blank" rel="noopener">Exploring the Sexual Dimorphism of Crustacean Neuropeptide Expression using <em>Callinectes sapidus</em> as a Model Organism ↗</a>
-        <div class="pub-authors"><strong>Hu, M.</strong>, Helfenbein, K., Buchberger, A., DeLaney, K., Liu, Y., Li, L.</div>
-        <span class="pub-journal journal-other">Journal of Proteome Research · 2021</span>
-      </div>
-    </div>
-
-  </div>
-  <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--muted);">
-    Full list →
-    <a href="https://scholar.google.com/citations?user=omlPnZkAAAAJ&hl=en" target="_blank" rel="noopener"
-       style="color:var(--teal); text-decoration:none;">Google Scholar ↗</a>
-  </p>
-</section>
-
-<div class="section-divider"></div>
+<div class="divider"></div>
 
 <!-- SKILLS -->
-<section id="skills">
-  <p class="section-label">Skills</p>
-  <h2>Technical Expertise</h2>
+<section class="section" id="skills">
+  <p class="section-tag">Technical Skills</p>
   <div class="skills-grid">
     <div class="skill-card">
-      <div class="skill-icon">⚙️</div>
-      <div class="skill-category">Programming</div>
+      <div class="skill-icon">⚙</div>
+      <div class="skill-cat">Programming</div>
       <div class="skill-tags">
-        <span class="tag">Python</span>
-        <span class="tag">R</span>
-        <span class="tag">Bash</span>
-        <span class="tag">Git</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🧠</div>
-      <div class="skill-category">ML Libraries</div>
-      <div class="skill-tags">
-        <span class="tag">PyTorch</span>
-        <span class="tag">TensorFlow</span>
-        <span class="tag">Scikit-learn</span>
+        <span class="tag">Python</span><span class="tag">R</span><span class="tag">Bash</span><span class="tag">Git</span>
       </div>
     </div>
     <div class="skill-card">
       <div class="skill-icon">🤖</div>
-      <div class="skill-category">Machine Learning &amp; AI</div>
+      <div class="skill-cat">Machine Learning & AI</div>
       <div class="skill-tags">
-        <span class="tag">Large Language Models</span>
-        <span class="tag">Deep Learning</span>
-        <span class="tag">Multimodal ML</span>
-        <span class="tag">Agentic AI</span>
-        <span class="tag">Prompt Engineering</span>
+        <span class="tag">LLMs</span><span class="tag">Deep Learning</span><span class="tag">Multimodal ML</span><span class="tag">Agentic AI</span><span class="tag">Prompt Engineering</span>
       </div>
     </div>
     <div class="skill-card">
       <div class="skill-icon">🔬</div>
-      <div class="skill-category">Computational Biology</div>
+      <div class="skill-cat">Computational Biology</div>
       <div class="skill-tags">
-        <span class="tag">Genome-scale Analysis</span>
-        <span class="tag">Proteomics</span>
-        <span class="tag">Perturbation Biology</span>
-        <span class="tag">CRISPR Analysis</span>
+        <span class="tag">Genome-scale Analysis</span><span class="tag">Proteomics</span><span class="tag">Perturbation Biology</span><span class="tag">CRISPR</span>
       </div>
     </div>
     <div class="skill-card">
       <div class="skill-icon">🌐</div>
-      <div class="skill-category">Languages</div>
+      <div class="skill-cat">Languages</div>
       <div class="skill-tags">
-        <span class="tag">English</span>
-        <span class="tag">Mandarin</span>
+        <span class="tag">English</span><span class="tag">Mandarin</span>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
 <!-- TALKS -->
-<section id="talks">
-  <p class="section-label">Talks &amp; Conferences</p>
-  <h2>Selected Presentations</h2>
+<section class="section" id="talks">
+  <p class="section-tag">Talks &amp; Presentations</p>
+  <h2>Selected Conferences</h2>
   <div class="talks-list">
-
     <div class="talk-item">
-      <div class="talk-dot invited"></div>
       <div class="talk-year">2026</div>
-      <div class="talk-text">
-        Invited talk at <strong>2026 Joint Mathematics Meetings</strong>, Washington, D.C.
-        <span class="talk-type type-invited">Invited</span>
-      </div>
+      <div class="talk-text">Invited talk — <em>2026 Joint Mathematics Meetings</em>, Washington, D.C.</div>
+      <span class="talk-badge b-invited">Invited</span>
     </div>
-
     <div class="talk-item">
-      <div class="talk-dot invited"></div>
       <div class="talk-year">2025</div>
-      <div class="talk-text">
-        Invited talk at <strong>Bridge2AI All Hands Meeting</strong>, North Bethesda, MD
-        <span class="talk-type type-invited">Invited</span>
-      </div>
+      <div class="talk-text">Invited talk — <em>Bridge2AI All Hands Meeting</em>, North Bethesda, MD</div>
+      <span class="talk-badge b-invited">Invited</span>
     </div>
-
     <div class="talk-item">
-      <div class="talk-dot invited"></div>
       <div class="talk-year">2024</div>
-      <div class="talk-text">
-        Invited talk at <strong>Cancer Cell Map Initiative EAC Meeting</strong>, San Francisco, CA
-        <span class="talk-type type-invited">Invited</span>
-      </div>
+      <div class="talk-text">Invited talk — <em>Cancer Cell Map Initiative EAC Meeting</em>, San Francisco, CA</div>
+      <span class="talk-badge b-invited">Invited</span>
     </div>
-
     <div class="talk-item">
-      <div class="talk-dot"></div>
       <div class="talk-year">2024</div>
-      <div class="talk-text">
-        Oral presentation at <strong>ISMB Annual Meeting</strong>, Montreal, Quebec, Canada
-        <span class="talk-type type-oral">Oral</span>
-      </div>
+      <div class="talk-text">Oral presentation — <em>ISMB Annual Meeting</em>, Montreal, Canada</div>
+      <span class="talk-badge b-oral">Oral</span>
     </div>
-
     <div class="talk-item">
-      <div class="talk-dot"></div>
       <div class="talk-year">2024</div>
-      <div class="talk-text">
-        Minisymposium oral presentation at <strong>AACR Annual Meeting</strong>, San Diego, CA
-        <span class="talk-type type-oral">Oral</span>
-      </div>
+      <div class="talk-text">Minisymposium oral — <em>AACR Annual Meeting</em>, San Diego, CA</div>
+      <span class="talk-badge b-oral">Oral</span>
     </div>
-
     <div class="talk-item">
-      <div class="talk-dot"></div>
       <div class="talk-year">2024</div>
-      <div class="talk-text">
-        Oral presentation at <strong>US HUPO Annual Meeting</strong>, Portland, OR
-        <span class="talk-type type-oral">Oral</span>
-      </div>
+      <div class="talk-text">Oral presentation — <em>US HUPO Annual Meeting</em>, Portland, OR</div>
+      <span class="talk-badge b-oral">Oral</span>
     </div>
-
     <div class="talk-item">
-      <div class="talk-dot"></div>
       <div class="talk-year">2023</div>
-      <div class="talk-text">
-        Oral presentation at <strong>SALK Mechanisms &amp; Models of Cancer Symposium</strong>, San Diego, CA
-        <span class="talk-type type-oral">Oral</span>
-      </div>
+      <div class="talk-text">Oral presentation — <em>SALK Mechanisms &amp; Models of Cancer Symposium</em>, San Diego, CA</div>
+      <span class="talk-badge b-oral">Oral</span>
     </div>
-
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
 <!-- EDUCATION -->
-<section id="education">
-  <p class="section-label">Education</p>
+<section class="section" id="education">
+  <p class="section-tag">Education</p>
   <h2>Academic Background</h2>
   <div class="edu-list">
     <div class="edu-item">
@@ -937,117 +924,27 @@
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- CONTACT / FOOTER -->
-<footer id="contact">
-  <p class="section-label" style="justify-content:center;display:flex;">Contact</p>
-  <h2>Let's connect</h2>
-  <p class="footer-desc">Open to research collaborations, speaking invitations, and conversations about AI in biology.</p>
-  <div class="contact-links">
-    <a class="contact-link" href="mailto:humengzhouclara@gmail.com">✉ humengzhouclara@gmail.com</a>
-    <a class="contact-link" href="https://linkedin.com/in/mengzhou-clara-hu" target="_blank" rel="noopener">in LinkedIn</a>
-    <a class="contact-link" href="https://github.com/Clarararaara" target="_blank" rel="noopener">⌥ GitHub</a>
-    <a class="contact-link" href="https://scholar.google.com/citations?user=omlPnZkAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+<!-- CONTACT — sage band -->
+<div class="sage-band" id="contact">
+  <div class="sage-inner">
+    <div>
+      <p class="section-tag">Contact</p>
+      <h2>Let's connect.</h2>
+      <p class="sage-desc">Open to research collaborations, speaking invitations, and conversations about AI in biology.</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:humengzhouclara@gmail.com">✉ humengzhouclara@gmail.com</a>
+      <a class="contact-link" href="https://linkedin.com/in/mengzhou-clara-hu" target="_blank" rel="noopener">in LinkedIn</a>
+      <a class="contact-link" href="https://github.com/Clarararaara" target="_blank" rel="noopener">⌥ GitHub</a>
+      <a class="contact-link" href="https://scholar.google.com/citations?user=omlPnZkAAAAJ&hl=en" target="_blank" rel="noopener">◎ Google Scholar</a>
+    </div>
   </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
   <p class="footer-copy">© 2026 Mengzhou (Clara) Hu · San Diego, CA</p>
 </footer>
-
-<script>
-/* ── Protein-network canvas animation ── */
-(function () {
-  const canvas = document.getElementById('network-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, nodes, mouse = { x: -9999, y: -9999 };
-
-  const NODE_COUNT = 55;
-  const MAX_DIST = 160;
-  const TEAL  = [61, 184, 154];
-  const PURPLE = [139, 111, 212];
-
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  function makeNode() {
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      r: 1.5 + Math.random() * 2,
-      color: Math.random() > 0.5 ? TEAL : PURPLE,
-    };
-  }
-
-  function init() {
-    resize();
-    nodes = Array.from({ length: NODE_COUNT }, makeNode);
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    /* edges */
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i], b = nodes[j];
-        const dx = a.x - b.x, dy = a.y - b.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist > MAX_DIST) continue;
-        const alpha = (1 - dist / MAX_DIST) * 0.35;
-        const cr = lerp(a.color[0], b.color[0], 0.5);
-        const cg = lerp(a.color[1], b.color[1], 0.5);
-        const cb = lerp(a.color[2], b.color[2], 0.5);
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.strokeStyle = `rgba(${cr},${cg},${cb},${alpha})`;
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-      }
-    }
-
-    /* nodes */
-    nodes.forEach(n => {
-      const dx = n.x - mouse.x, dy = n.y - mouse.y;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      const glow = d < 120 ? 1 - d / 120 : 0;
-
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r + glow * 3, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${n.color[0]},${n.color[1]},${n.color[2]},${0.7 + glow * 0.3})`;
-      ctx.fill();
-    });
-
-    /* update */
-    nodes.forEach(n => {
-      n.x += n.vx;
-      n.y += n.vy;
-      if (n.x < 0 || n.x > W) n.vx *= -1;
-      if (n.y < 0 || n.y > H) n.vy *= -1;
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', () => { resize(); });
-  document.getElementById('hero').addEventListener('mousemove', e => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-  document.getElementById('hero').addEventListener('mouseleave', () => {
-    mouse.x = -9999; mouse.y = -9999;
-  });
-
-  init();
-  draw();
-})();
-</script>
 
 </body>
 </html>
